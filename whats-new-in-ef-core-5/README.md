@@ -1,6 +1,6 @@
 # What's New in EF Core 5
 
-EF Core 5.0 is currently in development, and here is the list of all the interesting changes introduced so far in each preview.
+EF Core 5.0 is currently in development and here is the list of all the interesting changes introduced so far in each preview.
 
 ## Preview 1
 
@@ -468,7 +468,7 @@ context.Artists
     }).ToList();
 ```
 
-The above LINQ query generates the following two SQL queries when using the SQLite provider
+The above LINQ query generates the following two SQL queries when using the SQLite provider.
 
 ```csharp
 SELECT "a"."Id", "a"."Name"
@@ -481,7 +481,7 @@ INNER JOIN "Album" AS "a0" ON "a"."Id" = "a0"."ArtistId"
 ORDER BY "a"."Id"
 ```
 
-Only materialization of the collection is supported. Any composition after `e.Albums` in the above case won't result in a split query. 
+Only the materialization of the collection is supported. Any composition after `e.Albums` in the above case won't result in a split query. 
 
 ### IndexAttribute
 
@@ -1153,7 +1153,7 @@ SELECT @@ROWCOUNT;
 
 ### Context-wide split-query configuration
 
-The split queries can now be configured as the default for any query executed by the DbContext. This configuration is only available for relational providers, and so must be specified as part of the `UseProvider` configuration.
+The split queries can now be configured as the default for any query executed by the DbContext. This configuration is only available for relational providers and so must be specified as part of the `UseProvider` configuration.
 
 ```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -1165,7 +1165,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 ### PhysicalAddress mapping
 
-The standard .NET [PhysicalAddress class](https://docs.microsoft.com/en-us/dotnet/api/system.net.networkinformation.physicaladdress) is now automatically mapped to a string column for databases that do not already have native support.  For more information, see the examples for `IPAddress` above.
+The standard .NET [PhysicalAddress class](https://docs.microsoft.com/en-us/dotnet/api/system.net.networkinformation.physicaladdress) is now automatically mapped to a string column for databases that do not already have native support. For more information, see the examples for `IPAddress` above.
 
 ## RC1
 
@@ -1317,7 +1317,7 @@ Entity types are commonly mapped to tables or views such that EF Core will pull 
 * EF Core 5.0 allows an entity type to be mapped to a **defining query**. 
 * This was partially supported in previous versions, but is much improved and has different syntax in EF Core 5.0
 
-For example, consider two tables; one with modern posts; the other with legacy posts. The modern posts table has some additional columns, but for our application we want both modern and legacy posts to be combined and mapped to an entity type with all necessary properties.
+For example, consider two tables; one with modern posts; the other with legacy posts. The modern posts table has some additional columns, but for our application, we want both modern and legacy posts to be combined and mapped to an entity type with all necessary properties.
 
 ```csharp
 public class Post
@@ -1498,7 +1498,7 @@ public class MySaveChangesInterceptor : SaveChangesInterceptor
 ```
 
 * The interceptor has both sync and async methods. This can be useful if you need to perform async I/O, such as writing to an audit server.
-* The interceptor allows `SaveChanges` being skipped using the `InterceptionResult` mechanism common to all interceptors.
+* The interceptor allows `SaveChanges` to be skipped using the `InterceptionResult` mechanism common to all interceptors.
 
 The downside of interceptors is that they must be registered on the DbContext when it is being constructed. 
 
@@ -1603,7 +1603,7 @@ CREATE TABLE "People" (
 );
 ```
 
-As you can see that all the columns are nullable, even though some of the `HomeAddress` properties have been configured as required. Also, when querying for a `Person`, if all the columns for either the home or work address are null, then EF Core will leave the `HomeAddress` and/or `WorkAddress` properties as null, rather than setting an empty instance of `Address`.
+You can see that all the columns are nullable, even though some of the `HomeAddress` properties have been configured as required. Also, when querying for a `Person`, if all the columns for either the home or work address are null, then EF Core will leave the `HomeAddress` and/or `WorkAddress` properties as null, rather than setting an empty instance of `Address`.
 
 In EF Core 5.0, the `HomeAddress` navigation can now be configured as a required dependency. 
 
@@ -1800,7 +1800,7 @@ public class Blog
 }
 ```
 
-The configuaration are as follows.
+The configurations are as follows:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
