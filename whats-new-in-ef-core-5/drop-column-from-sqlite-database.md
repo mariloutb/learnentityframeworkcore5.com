@@ -128,6 +128,6 @@ In EF Core 5.0, you will see that migrations will instead rebuild the table succ
 * A temporary table is created with the desired schema for the new table.
 * Data is copied from the current table into the temporary table.
 * Foreign key enforcement is switched off.
-* The current table is dropped
+* The current table is dropped.
 * The temporary table is renamed to be the new table.
 
